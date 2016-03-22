@@ -5,8 +5,10 @@
  */
 package com.udea.edu.laboratorio1.controller;
 
+import com.udea.edu.laboratorio1.negocio.ClienteDAOLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author esteban
  */
 public class ClienteServlet extends HttpServlet {
+
+    @EJB
+    private ClienteDAOLocal clienteDAO;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -72,7 +77,7 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -82,5 +87,7 @@ public class ClienteServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
+    
+    
 }
