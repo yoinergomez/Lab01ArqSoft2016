@@ -4,9 +4,33 @@
         <servlet-name>ClienteServlet</servlet-name>
         <servlet-class>com.udea.edu.laboratorio1.controller.ClienteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TipoVehiculoServlet</servlet-name>
+        <servlet-class>com.udea.edu.laboratorio1.controller.TipoVehiculoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VehiculoServlet</servlet-name>
+        <servlet-class>com.udea.edu.laboratorio1.controller.VehiculoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VentaServlet</servlet-name>
+        <servlet-class>com.udea.edu.laboratorio1.controller.VentaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TipoVehiculoServlet</servlet-name>
+        <url-pattern>/TipoVehiculoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VehiculoServlet</servlet-name>
+        <url-pattern>/VehiculoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VentaServlet</servlet-name>
+        <url-pattern>/VentaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
