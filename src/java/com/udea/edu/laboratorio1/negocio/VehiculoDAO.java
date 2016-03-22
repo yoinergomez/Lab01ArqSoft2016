@@ -1,6 +1,6 @@
-package com.udea.edu.Laboratorio1.negocio;
+package com.udea.edu.laboratorio1.negocio;
 
-import com.udea.edu.Laboratorio1.modelo.Vehiculo;
+import com.udea.edu.laboratorio1.modelo.Vehiculo;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
