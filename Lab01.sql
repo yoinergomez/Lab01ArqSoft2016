@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `Vehiculo` (
   `placa` varchar(20) NOT NULL,
   `color` varchar(15) DEFAULT NULL,
   `tipoVehiculo` varchar(10) NOT NULL,
+  `estado` int(1) NOT NULL,
   PRIMARY KEY (`placa`),
   KEY `tipoVehiculo` (`tipoVehiculo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
