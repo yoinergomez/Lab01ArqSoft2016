@@ -19,7 +19,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class VentaDAO implements VentaDAOLocal {
 
-    @PersistenceContext(unitName = "Lab01Arq_Soft2016PU")
+    @PersistenceContext(unitName = "Laboratorio1_2PU")
     private EntityManager em;
     
     

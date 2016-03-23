@@ -19,6 +19,14 @@
         <title>Concesionario</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+
+        <ul class="nav nav-tabs">
+            <li><a href="index.jsp">Inicio</a></li>
+            <li><a href="ClienteServlet">Clientes</a></li>
+            <li><a href="TipoVehiculoServlet">Tipo de vehiculos</a></li>
+            <li><a href="VehiculoServlet">Inventario vehiculos</a></li>
+            <li><a href="VentasServlet">Lista de ventas</a></li>
+        </ul>
+        
     </body>
 </html>
