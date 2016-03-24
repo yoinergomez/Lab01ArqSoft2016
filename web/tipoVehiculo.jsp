@@ -18,6 +18,10 @@
             <form action="./TipoVehiculoServlet" method="POST">
                 <table>
                     <tr>
+                        <th>Codigo</th>
+                        <th><input type="text" name="idTipoVehiculo" class="form-control" placeholder="Codigo"/></th>
+                    </tr>
+                    <tr>
                         <th>Marca</th>
                         <th><input type="text" name="marca" class="form-control" placeholder="Marca"/></th>
                     </tr>
@@ -42,8 +46,7 @@
                             <input type="submit" name="action" value="Add"/>
                             <input type="submit" name="action" value="Edit"/>
                             <input type="submit" name="action" value="Delete"/>
-                            <input type="submit" name="action" value="Search"/>
-                            <input type="submit" name="action" value="Search All"/>
+                            <input type="submit" name="action" value="SearchAll"/>
 
                         </td>
                     </tr>
@@ -57,6 +60,7 @@
                 <th>Imagen</th>
                 <c:forEach items="${getAllTipoVehiculo}" var="tipoVehiculo"> 
                     <tr>
+                        <td>${tipoVehiculo.id}</td>
                         <td>${tipoVehiculo.marca}</td>
                         <td>${tipoVehiculo.modelo}</td>
                         <td>${tipoVehiculo.precio}</td>
