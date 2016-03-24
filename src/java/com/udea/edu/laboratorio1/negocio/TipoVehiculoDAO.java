@@ -37,8 +37,8 @@ public class TipoVehiculoDAO implements TipoVehiculoDAOLocal {
     }
 
     @Override
-    public List<TipoVehiculo> getAllTipoVehiculo(TipoVehiculo tipoVehiculo) {
-        return em.createQuery("TipoVehiculo.getAll").getResultList();
+    public List<TipoVehiculo> getAllTipoVehiculo() {
+        return em.createNamedQuery("TipoVehiculo.getAll").getResultList();
     }
 
     public void persist(Object object) {

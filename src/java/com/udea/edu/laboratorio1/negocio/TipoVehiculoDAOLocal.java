@@ -19,5 +19,5 @@ public interface TipoVehiculoDAOLocal {
     public void deleteTipoVehiculo(TipoVehiculo tipoVehiculo);
     public void editTipoVehiculo(TipoVehiculo tipoVehiculo);
     public TipoVehiculo getTipoVehiculo(String tipoVehiculoId);
-    public List<TipoVehiculo> getAllTipoVehiculo(TipoVehiculo tipoVehiculo);
+    public List<TipoVehiculo> getAllTipoVehiculo();
 }

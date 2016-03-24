@@ -14,6 +14,15 @@
         <title>Tipo vehiculo</title>
     </head>
     <body>
+        
+        <ul class="nav nav-tabs">
+            <li><a href="index.jsp">Inicio</a></li>
+            <li><a href="ClienteServlet">Clientes</a></li>
+            <li><a href="TipoVehiculoServlet">Tipo de vehiculos</a></li>
+            <li><a href="VehiculoServlet">Inventario vehiculos</a></li>
+            <li><a href="VentasServlet">Lista de ventas</a></li>
+        </ul>
+        
         <div class="container-well">
             <form action="./TipoVehiculoServlet" method="POST">
                 <table>
@@ -53,19 +62,21 @@
                 </table> 
             </form>
             <table class="table table-stripped">
+                <th>Codigo</th>
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Imagen</th>
-                <c:forEach items="${getAllTipoVehiculo}" var="tipoVehiculo"> 
+
+                <c:forEach items="${tipoVehiculo}" var="tipoVehiculo"> 
                     <tr>
                         <td>${tipoVehiculo.id}</td>
                         <td>${tipoVehiculo.marca}</td>
                         <td>${tipoVehiculo.modelo}</td>
                         <td>${tipoVehiculo.precio}</td>
                         <td>${tipoVehiculo.cantidad}</td>
-                        <td>${tipoVehiculo.imagen}</td>
+                        <td><img width="150" height="100" src="images/${tipoVehiculo.imagen}"></td>
                     </tr>
                 </c:forEach>
             </table>
