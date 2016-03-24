@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -39,14 +40,33 @@ public class TipoVehiculoServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             //Captura de valores del formulario
+            String id = request.getParameter("idTipoVehiculo");
             String modelo = request.getParameter("modelo");
             String marca = request.getParameter("marca");
             String precioStr = request.getParameter("precio");
             String cantidadStr = request.getParameter("cantidad");
+            Part part = request.getPart("imagen");
             
+            //Parseando los datos string a int
             Parse parse = new Parse();
             int precio = parse.stringTOint(precioStr);
             int cantidad = parse.stringTOint(cantidadStr);
+            
+            //Capturando la acción
+            String action = request.getParameter("action");
+            action = action.toLowerCase();
+            
+            switch(action){
+                case "add":
+                    
+                    break;
+                    
+                case "edit":
+                    break;
+                    
+                case "delete":
+                    break;
+            }
         }
     }
 
