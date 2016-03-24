@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `TipoVehiculo` (
   `modelo` varchar(25) NOT NULL,
   `precio` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `imagen` blob,
+  `imagen` longblob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
