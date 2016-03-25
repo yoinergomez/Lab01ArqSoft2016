@@ -92,7 +92,14 @@ public class TipoVehiculoServlet extends HttpServlet {
                     
                     //Editando un tipo de vehiculo
                     tipoVehiculo = new TipoVehiculo(id, marca, modelo, precio, cantidad, imagen);
-                    tipoVehiculoDAO.editTipoVehiculo(tipoVehiculo);
+                    if(validar.esValidoTipoVehiculo(tipoVehiculo)){
+                        tipoVehiculoDAO.addTipoVehiculo(tipoVehiculo);
+                    } else {
+                        String error = validar.crearMensajeScript(
+                                "Ingrese correctamente los datos "
+                                        + "en los campos del formulario");
+                        out.println(error);
+                    }
                     break;
                 case "delete":
                     //Eliminando un tipo de vehiculo
