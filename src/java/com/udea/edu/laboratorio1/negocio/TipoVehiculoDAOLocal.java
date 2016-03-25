@@ -16,7 +16,7 @@ import javax.ejb.Local;
 @Local
 public interface TipoVehiculoDAOLocal {
     public void addTipoVehiculo(TipoVehiculo tipoVehiculo);
-    public void deleteTipoVehiculo(TipoVehiculo tipoVehiculo);
+    public void deleteTipoVehiculo(String tipoVehiculoId);
     public void editTipoVehiculo(TipoVehiculo tipoVehiculo);
     public TipoVehiculo getTipoVehiculo(String tipoVehiculoId);
     public List<TipoVehiculo> getAllTipoVehiculo();

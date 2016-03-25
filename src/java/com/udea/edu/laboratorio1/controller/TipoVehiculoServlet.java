@@ -5,6 +5,7 @@
  */
 package com.udea.edu.laboratorio1.controller;
 
+import com.udea.edu.laboratorio1.modelo.TipoVehiculo;
 import com.udea.edu.laboratorio1.negocio.TipoVehiculoDAOLocal;
 import com.udea.edu.laboratorio1.util.Parse;
 import java.io.IOException;
@@ -51,26 +52,41 @@ public class TipoVehiculoServlet extends HttpServlet {
             
             //Parseando los datos string a int
             Parse parse = new Parse();
-//            int precio = parse.stringTOint(precioStr);
-//            int cantidad = parse.stringTOint(cantidadStr);
-            
-            //Leyendo la imagen
-            //byte[] imagen = parse.leerImagen(part);
+            int precio = parse.stringAint(precioStr);
+            int cantidad = parse.stringAint(cantidadStr);
+       
             
             //Capturando la acción
             String action = request.getParameter("action");
             action = parse.aMinuscula(action);
-//            
+            
+            
+            TipoVehiculo tipoVehiculo;
+            Part part;
+            byte[] imagen;
             switch(action){
                 case "add":
-                    Part part = request.getPart("imagen");
+                    //Leyendo la imagen
+                    part = request.getPart("imagen");
+                    imagen = parse.leerImagen(part);
                     
+                    //Añadiendo un tipo de vehiculo
+                    tipoVehiculo = new TipoVehiculo(id, marca, modelo, precio, cantidad, imagen);
+                    tipoVehiculoDAO.addTipoVehiculo(tipoVehiculo);
                     break;
                     
                 case "edit":
-                    break;
+                    //Leyendo la imagen
+                    part = request.getPart("imagen");
+                    imagen = parse.leerImagen(part);
                     
+                    //Editando un tipo de vehiculo
+                    tipoVehiculo = new TipoVehiculo(id, marca, modelo, precio, cantidad, imagen);
+                    tipoVehiculoDAO.editTipoVehiculo(tipoVehiculo);
+                    break;
                 case "delete":
+                    //Eliminando un tipo de vehiculo
+                    tipoVehiculoDAO.deleteTipoVehiculo(id);
                     break;
                     
                 default:

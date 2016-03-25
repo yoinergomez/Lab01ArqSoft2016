@@ -55,8 +55,6 @@
                             <input type="submit" name="action" value="Add"/>
                             <input type="submit" name="action" value="Edit"/>
                             <input type="submit" name="action" value="Delete"/>
-                            <input type="submit" name="action" value="SearchAll"/>
-
                         </td>
                     </tr>
                 </table> 
@@ -76,7 +74,6 @@
                         <td>${tipoVehiculo.modelo}</td>
                         <td>${tipoVehiculo.precio}</td>
                         <td>${tipoVehiculo.cantidad}</td>
-                        <td>${tipoVehiculo.id}</td>
                         <td><img width="150" height="100" src="images/${tipoVehiculo.id}"></td>
                     </tr>
                 </c:forEach>

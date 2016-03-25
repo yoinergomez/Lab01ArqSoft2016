@@ -21,9 +21,8 @@ public class TipoVehiculoDAO implements TipoVehiculoDAOLocal {
     }
 
     @Override
-    public void deleteTipoVehiculo(TipoVehiculo tipoVehiculo) {
-        tipoVehiculo = em.find(TipoVehiculo.class, tipoVehiculo.getId());
-        em.remove(tipoVehiculo);
+    public void deleteTipoVehiculo(String tipoVehiculo) {
+        em.remove(getTipoVehiculo(tipoVehiculo));
     }
 
     @Override
