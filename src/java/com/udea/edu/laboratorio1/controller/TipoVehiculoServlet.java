@@ -8,6 +8,7 @@ package com.udea.edu.laboratorio1.controller;
 import com.udea.edu.laboratorio1.modelo.TipoVehiculo;
 import com.udea.edu.laboratorio1.negocio.TipoVehiculoDAOLocal;
 import com.udea.edu.laboratorio1.util.Parse;
+import com.udea.edu.laboratorio1.util.ValidadorEntrada;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -52,6 +53,7 @@ public class TipoVehiculoServlet extends HttpServlet {
             
             //Parseando los datos string a int
             Parse parse = new Parse();
+            ValidadorEntrada validar = new ValidadorEntrada();
             int precio = parse.stringAint(precioStr);
             int cantidad = parse.stringAint(cantidadStr);
        
@@ -72,7 +74,15 @@ public class TipoVehiculoServlet extends HttpServlet {
                     
                     //Añadiendo un tipo de vehiculo
                     tipoVehiculo = new TipoVehiculo(id, marca, modelo, precio, cantidad, imagen);
-                    tipoVehiculoDAO.addTipoVehiculo(tipoVehiculo);
+                    if(validar.esValidoTipoVehiculo(tipoVehiculo)){
+                        tipoVehiculoDAO.addTipoVehiculo(tipoVehiculo);
+                    } else {
+                        String error = validar.crearMensajeScript(
+                                "Ingrese correctamente los datos "
+                                        + "en los campos del formulario");
+                        out.println(error);
+                    }
+                    
                     break;
                     
                 case "edit":

@@ -43,7 +43,9 @@ public class VehiculoServlet extends HttpServlet {
             out.println("<title>Servlet VehiculoServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet VehiculoServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet VehiculoServlet at " + request.getContextPath() + "</h1>");  
+            String error = "<script type=\"text/javascript\"> alert('Ingrese correctamente los datos en los campos del formulario'); </script>";
+out.println(error);  
             out.println("</body>");
             out.println("</html>");
         }
