@@ -47,10 +47,10 @@ public class TipoVehiculoServlet extends HttpServlet {
             String marca = request.getParameter("marca");
             String precioStr = request.getParameter("precio");
             String cantidadStr = request.getParameter("cantidad");
-            //Part part = request.getPart("imagen");
+            
             
             //Parseando los datos string a int
-//            Parse parse = new Parse();
+            Parse parse = new Parse();
 //            int precio = parse.stringTOint(precioStr);
 //            int cantidad = parse.stringTOint(cantidadStr);
             
@@ -58,21 +58,24 @@ public class TipoVehiculoServlet extends HttpServlet {
             //byte[] imagen = parse.leerImagen(part);
             
             //Capturando la acción
-//            String action = request.getParameter("action");
-//            action = action.toLowerCase();
+            String action = request.getParameter("action");
+            action = parse.aMinuscula(action);
 //            
-//            switch(action){
-//                case "add":
-//                    
-//                    
-//                    break;
-//                    
-//                case "edit":
-//                    break;
-//                    
-//                case "delete":
-//                    break;
-//            }
+            switch(action){
+                case "add":
+                    Part part = request.getPart("imagen");
+                    
+                    break;
+                    
+                case "edit":
+                    break;
+                    
+                case "delete":
+                    break;
+                    
+                default:
+                    break;
+            }
             
             request.setAttribute("tipoVehiculo", tipoVehiculoDAO.getAllTipoVehiculo());
             request.getRequestDispatcher("tipoVehiculo.jsp").forward(request,

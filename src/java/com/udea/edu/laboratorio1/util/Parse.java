@@ -18,7 +18,7 @@ import javax.servlet.http.Part;
  */
 public class Parse {
     
-    public int stringTOint(String string){
+    public int stringAint(String string){
         int entero = 0;
         try{
             entero = Integer.parseInt(string);
@@ -73,5 +73,18 @@ public class Parse {
         } 
         
         return datos;
+    }
+    
+    public String aMinuscula(String string){
+        try{
+            return string.toLowerCase();
+        } catch(NullPointerException e){
+            System.out.println("aMiniscula: El parametro de entrada es nulo");
+            System.out.println(e.getMessage());
+        } catch (Exception e){
+            System.out.println("leerImagen: Error al convertir String");
+            System.out.println(e.getMessage());
+        } 
+        return "";
     }
 }

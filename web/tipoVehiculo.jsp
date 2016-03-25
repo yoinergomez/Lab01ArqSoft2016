@@ -24,7 +24,7 @@
         </ul>
         
         <div class="container-well">
-            <form action="./TipoVehiculoServlet" method="POST">
+            <form action="./TipoVehiculoServlet" method="POST" enctype="multipart/form-data">
                 <table>
                     <tr>
                         <th>Codigo</th>
