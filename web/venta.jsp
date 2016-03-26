@@ -48,10 +48,6 @@
                         <th><input type="text" name="cantidad" class="form-control" placeholder="Cantidad"/></th>
                     </tr>
                     <tr>
-                        <th>Imagen</th>
-                        <th><input type="file" name="imagen" class="form-control"></th>
-                    </tr>
-                    <tr>
                         <td colspan="2">
                             <input type="submit" name="action" value="Add"/>
                             <input type="submit" name="action" value="Edit"/>
@@ -61,18 +57,17 @@
                 </table> 
             </form>
             <table class="table table-stripped">
-                <th>Codigo</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Imagen</th>
+                <th>Placa</th>
+                <th>Color</th>
+                <th>Tipo Vehiculo</th>
+                <th></th>
                 
                 <c:forEach items="${getAllVehiculo}" var="vehiculo">
                     <tr>
                         <td >${vehiculo.placa}</td>
                         <td >${vehiculo.color}</td>
                         <td >${vehiculo.estado}</td>  
+                        <td ><input type="submit" name="action" value="Comprar"/></td>  
                     </tr>                      
                 </c:forEach>    
                 
