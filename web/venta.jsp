@@ -39,14 +39,20 @@
             <table class="table table-stripped">
                 <th>Placa</th>
                 <th>Color</th>
-                <th>Tipo Vehiculo</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Precio</th>
+                <th>Imagen</th>
                 <th></th>
                 
                 <c:forEach items="${getAllVehiculo}" var="vehiculo">
                     <tr>
                         <td >${vehiculo.placa}</td>
-                        <td >${vehiculo.color}</td>
-                        <td >${vehiculo.estado}</td>  
+                        <td >${vehiculo.color}</td> 
+                        <td >${vehiculo.tipoVehiculo.marca}</td>  
+                        <td >${vehiculo.tipoVehiculo.modelo}</td>  
+                        <td >${vehiculo.tipoVehiculo.precio}</td>
+                        <td><img width="150" height="100" src="images/${vehiculo.tipoVehiculo.id}"></td>
                         <td ><input type="submit" name="action" value="Comprar"/></td>  
                     </tr>                      
                 </c:forEach>    
