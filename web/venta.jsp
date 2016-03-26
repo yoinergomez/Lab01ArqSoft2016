@@ -28,31 +28,11 @@
             <form action="./TipoVehiculoServlet" method="POST">
                 <table>
                     <tr>
-                        <th>Codigo</th>
-                        <th><input type="text" name="idTipoVehiculo" class="form-control" placeholder="Codigo"/></th>
+                        <th>Placa: </th>
+                        <th><input type="text" name="placa" class="form-control" placeholder="Placa"/></th>
                     </tr>
                     <tr>
-                        <th>Marca</th>
-                        <th><input type="text" name="marca" class="form-control" placeholder="Marca"/></th>
-                    </tr>
-                    <tr>
-                        <th>Modelo</th>
-                        <th><input type="text" name="modelo" class="form-control" placeholder="Modelo"/></th>
-                    </tr>
-                    <tr>
-                        <th>Precio</th>
-                        <th><input type="text" name="precio" class="form-control" placeholder="Precio"/></th>
-                    </tr>
-                    <tr>
-                        <th>Cantidad</th>
-                        <th><input type="text" name="cantidad" class="form-control" placeholder="Cantidad"/></th>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <input type="submit" name="action" value="Add"/>
-                            <input type="submit" name="action" value="Edit"/>
-                            <input type="submit" name="action" value="Delete"/>
-                        </td>
+                        <td><input type="submit" name="action" value="Buscar"/></td>
                     </tr>
                 </table> 
             </form>
