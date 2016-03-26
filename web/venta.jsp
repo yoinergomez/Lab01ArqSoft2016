@@ -68,6 +68,13 @@
                 <th>Cantidad</th>
                 <th>Imagen</th>
                 
+                <c:forEach items="${getAllVehiculo}" var="vehiculo">
+                    <tr>
+                        <td >${vehiculo.placa}</td>
+                        <td >${vehiculo.color}</td>
+                        <td >${vehiculo.estado}</td>  
+                    </tr>                      
+                </c:forEach>    
                 
                     
             </table>

@@ -16,5 +16,6 @@ public interface VehiculoDAOLocal {
     public void editVehiculo(Vehiculo vehiculo);
     public Vehiculo getVehiculo(String vehiculoPlaca);
     public List<Vehiculo> getAllVehiculo();
+    public List<Vehiculo> getAllVehiculoDisponible();
     
 }

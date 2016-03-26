@@ -45,5 +45,10 @@ public class VehiculoDAO implements VehiculoDAOLocal {
         em.persist(object);
     }
 
+    @Override
+    public List<Vehiculo> getAllVehiculoDisponible() {
+        return em.createNamedQuery("Vehiculo.getAllDisponible").getResultList();
+    }
+
 
 }

@@ -19,8 +19,10 @@ import javax.persistence.NamedQueries;
 
 @Entity
 @Table(name="Vehiculo")
-@NamedQueries(@NamedQuery(name="Vehiculo.getAll",query="SELECT ve FROM Vehiculo ve"))
-
+@NamedQueries({
+    @NamedQuery(name="Vehiculo.getAll",query="SELECT ve FROM Vehiculo ve"),
+    @NamedQuery(name="Vehiculo.getAllDisponible",query="SELECT ve FROM Vehiculo ve WHERE ve.estado = 0")
+})
 public class Vehiculo implements Serializable{
 
     public Vehiculo() {
@@ -40,6 +42,9 @@ public class Vehiculo implements Serializable{
     
     @Column(name="color")
     private String color;
+    
+    @Column(name="estado")
+    private int estado;
     
     @ManyToOne()
     @JoinColumn(name= "TipoVehiculo")
@@ -68,6 +73,15 @@ public class Vehiculo implements Serializable{
     public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
         this.tipoVehiculo = tipoVehiculo;
     }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+    
     
 }
 

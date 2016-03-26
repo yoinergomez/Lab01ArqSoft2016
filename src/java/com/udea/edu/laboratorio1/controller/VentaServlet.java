@@ -41,7 +41,7 @@ public class VentaServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            request.setAttribute("getAllVenta", vehiculoDAO.getAllVehiculo());
+            request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
             request.getRequestDispatcher("venta.jsp").forward(request,
                     response);
         }
