@@ -20,7 +20,7 @@ import javax.persistence.Table;
  * @author 
  */
 @Entity
-@Table(name="cliente")
+@Table(name="Cliente")
 @NamedQueries(@NamedQuery(name="Cliente.getAll",query="SELECT e FROM Cliente e"))
 public class Cliente implements Serializable{
 

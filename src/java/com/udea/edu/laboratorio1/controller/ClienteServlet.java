@@ -5,7 +5,9 @@
  */
 package com.udea.edu.laboratorio1.controller;
 
+import com.udea.edu.laboratorio1.modelo.Cliente;
 import com.udea.edu.laboratorio1.negocio.ClienteDAOLocal;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -36,16 +38,56 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ClienteServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ClienteServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            String action = request.getParameter("action");
+            String documento = request.getParameter("documento");
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            String direccion = request.getParameter("direcion");
+            String telefono = request.getParameter("telefono");
+            Cliente clienteAux = new Cliente(documento, nombre, apellido, direccion, telefono);
+            if ("Añadir".equalsIgnoreCase(action)) {
+                String newCliente = clienteDAO.getCliente(documento).getNumeroDocumento();
+                if (!newCliente.isEmpty()) {
+                    out.println("<script>"); 
+                    out.println("alert('El cliente ya existe.')"); 
+                    out.println("</script>"); 
+                    return;
+                } else if (documento.isEmpty()) {
+                    out.println("<script>"); 
+                    out.println("alert('Numero de documento es requerido')"); 
+                    out.println("</script>");
+                    return;
+                } else if (nombre.isEmpty()) {
+                    out.println("<script>"); 
+                    out.println("alert('El nombre es requerido.')"); 
+                    out.println("</script>");
+                    return;
+                } else if (apellido.isEmpty()) {
+                    out.println("<script>"); 
+                    out.println("alert('El apellido es requerido.')"); 
+                    out.println("</script>");
+                    return;
+                }
+                clienteDAO.addCliente(clienteAux);
+            } else if ("Editar".equalsIgnoreCase(action)) {
+                clienteDAO.editCliente(clienteAux);
+            } else if ("Buscar".equalsIgnoreCase(action)) {
+                clienteAux = clienteDAO.getCliente(documento);
+                if (clienteAux.getNumeroDocumento().isEmpty()) {
+                    out.println("<script>"); 
+                    out.println("alert('El cliente no existe.')"); 
+                    out.println("</script>");
+                    return;
+                } else {
+                    request.setAttribute("cliente", clienteAux);
+                }
+            } else if ("Eliminar".equalsIgnoreCase(action)) {
+                clienteDAO.deleteCliente(clienteAux);
+            }
+                
+            request.setAttribute("clientes", clienteDAO.getAllClientes());
+            request.getRequestDispatcher("cliente.jsp").forward(request, response);
         }
     }
 
@@ -76,6 +118,7 @@ public class ClienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
     
     /**

@@ -5,6 +5,7 @@
  */
 package com.udea.edu.laboratorio1.controller;
 
+import com.udea.edu.laboratorio1.negocio.VehiculoDAOLocal;
 import com.udea.edu.laboratorio1.negocio.VentaDAOLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +22,11 @@ import javax.servlet.http.HttpServletResponse;
 public class VentaServlet extends HttpServlet {
 
     @EJB
+    private VehiculoDAOLocal vehiculoDAO;
+
+    @EJB
     private VentaDAOLocal ventaDAO;
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +41,9 @@ public class VentaServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+            request.setAttribute("getAllVenta", vehiculoDAO.getAllVehiculo());
+            request.getRequestDispatcher("venta.jsp").forward(request,
+                    response);
         }
     }
 

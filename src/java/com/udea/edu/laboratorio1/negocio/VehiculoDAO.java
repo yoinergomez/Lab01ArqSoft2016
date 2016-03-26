@@ -37,8 +37,8 @@ public class VehiculoDAO implements VehiculoDAOLocal {
     }
 
     @Override
-    public List<Vehiculo> getAllVehiculo(Vehiculo vehiculo) {
-        return em.createQuery("Vehiculo.getAll").getResultList();
+    public List<Vehiculo> getAllVehiculo() {
+        return em.createNamedQuery("Vehiculo.getAll").getResultList();
     }
 
     public void persist(Object object) {

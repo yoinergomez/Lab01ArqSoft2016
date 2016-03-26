@@ -29,10 +29,10 @@ public class Venta implements Serializable{
     @Column(name="fecha")
     private Date fecha;
     @ManyToOne()
-    @JoinColumn(name="Cliente")
+    @JoinColumn(name="numeroDocumento")
     private Cliente cliente;
     @OneToOne()
-    @JoinColumn(name="Vehiculo")
+    @JoinColumn(name="placa")
     private Vehiculo vehiculo;
     
 

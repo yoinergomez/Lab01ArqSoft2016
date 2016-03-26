@@ -20,11 +20,12 @@
             <li><a href="ClienteServlet">Clientes</a></li>
             <li><a href="TipoVehiculoServlet">Tipo de vehiculos</a></li>
             <li><a href="VehiculoServlet">Inventario vehiculos</a></li>
-            <li><a href="VentasServlet">Lista de ventas</a></li>
+            <li><a href="VentaServlet">Realizar venta</a></li>
+            <li><a href="VentaServlet">Lista de ventas</a></li>
         </ul>
         
         <div class="container-well">
-            <form action="./TipoVehiculoServlet" method="POST" enctype="multipart/form-data">
+            <form action="./TipoVehiculoServlet" method="POST">
                 <table>
                     <tr>
                         <th>Codigo</th>
@@ -66,17 +67,9 @@
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Imagen</th>
-
-                <c:forEach items="${tipoVehiculo}" var="tipoVehiculo"> 
-                    <tr>
-                        <td>${tipoVehiculo.id}</td>
-                        <td>${tipoVehiculo.marca}</td>
-                        <td>${tipoVehiculo.modelo}</td>
-                        <td>${tipoVehiculo.precio}</td>
-                        <td>${tipoVehiculo.cantidad}</td>
-                        <td><img width="150" height="100" src="images/${tipoVehiculo.id}"></td>
-                    </tr>
-                </c:forEach>
+                
+                
+                    
             </table>
         </div>
     </body>
