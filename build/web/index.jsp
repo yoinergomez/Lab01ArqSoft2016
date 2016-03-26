@@ -25,7 +25,8 @@
             <li><a href="ClienteServlet">Clientes</a></li>
             <li><a href="TipoVehiculoServlet">Tipo de vehiculos</a></li>
             <li><a href="VehiculoServlet">Inventario vehiculos</a></li>
-            <li><a href="VentasServlet">Lista de ventas</a></li>
+            <li><a href="VentaServlet">Realizar venta</a></li>
+            <li><a href="VentaServlet">Lista de ventas</a></li>
         </ul>
         
     </body>
