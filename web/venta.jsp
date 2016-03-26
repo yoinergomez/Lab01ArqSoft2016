@@ -30,9 +30,7 @@
                     <tr>
                         <th>Placa: </th>
                         <th><input type="text" name="placa" class="form-control" placeholder="Placa"/></th>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" name="action" value="Buscar"/></td>
+                        <th><input type="submit" name="action" value="Buscar"/></th>
                     </tr>
                 </table> 
             </form>
