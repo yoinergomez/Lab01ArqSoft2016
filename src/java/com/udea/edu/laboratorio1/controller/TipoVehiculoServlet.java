@@ -111,8 +111,7 @@ public class TipoVehiculoServlet extends HttpServlet {
             }
             
             request.setAttribute("tipoVehiculo", tipoVehiculoDAO.getAllTipoVehiculo());
-            request.getRequestDispatcher("tipoVehiculo.jsp").forward(request,
-                    response);
+            request.getRequestDispatcher("tipoVehiculo.jsp").forward(request,response);
         }
     }
 

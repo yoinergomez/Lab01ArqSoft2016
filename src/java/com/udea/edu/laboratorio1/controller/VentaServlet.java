@@ -5,10 +5,14 @@
  */
 package com.udea.edu.laboratorio1.controller;
 
+import com.udea.edu.laboratorio1.modelo.Vehiculo;
 import com.udea.edu.laboratorio1.negocio.VehiculoDAOLocal;
 import com.udea.edu.laboratorio1.negocio.VentaDAOLocal;
+import com.udea.edu.laboratorio1.util.Parse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,9 +45,40 @@ public class VentaServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
-            request.getRequestDispatcher("venta.jsp").forward(request,
-                    response);
+            
+            //Captura de valores del formulario
+            String placa = request.getParameter("placa");
+            
+            //Capturando la acción
+            Parse parse = new Parse();
+            String action = request.getParameter("action");
+            action = parse.aMinuscula(action);
+            
+            
+            switch(action){
+                case "buscar":
+                    if(!placa.isEmpty()){
+                        List<Vehiculo> vehiculo = new ArrayList<Vehiculo>();
+                        vehiculo.add(vehiculoDAO.getVehiculo(placa));
+                        request.setAttribute("getAllVehiculo", vehiculo);
+                    } else{
+                        request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
+                    }
+                    break;
+                    
+                case "comprar":
+                    
+                    break;
+   
+                    
+                default:
+                    request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
+                    break;
+            }  
+            
+            //Redireccionamiento de página jsp
+            request.getRequestDispatcher("venta.jsp").forward(request,response);
+            
         }
     }
 

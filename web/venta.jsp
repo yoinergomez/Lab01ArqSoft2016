@@ -25,7 +25,7 @@
         </ul>
         
         <div class="container-well">
-            <form action="./TipoVehiculoServlet" method="POST">
+            <form action="./VentaServlet" method="POST">
                 <table>
                     <tr>
                         <th>Placa: </th>
@@ -51,7 +51,7 @@
                         <td >${vehiculo.tipoVehiculo.modelo}</td>  
                         <td >${vehiculo.tipoVehiculo.precio}</td>
                         <td><img width="150" height="100" src="images/${vehiculo.tipoVehiculo.id}"></td>
-                        <td ><input type="submit" name="action" value="Comprar"/></td>  
+                        <td ><input type="submit" name="action" value="Vender"/></td>  
                     </tr>                      
                 </c:forEach>    
                 
