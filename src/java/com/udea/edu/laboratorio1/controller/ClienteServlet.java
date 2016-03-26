@@ -46,30 +46,32 @@ public class ClienteServlet extends HttpServlet {
             String direccion = request.getParameter("direcion");
             String telefono = request.getParameter("telefono");
             Cliente clienteAux = new Cliente(documento, nombre, apellido, direccion, telefono);
-            if ("Añadir".equalsIgnoreCase(action)) {
-                String newCliente = clienteDAO.getCliente(documento).getNumeroDocumento();
-                if (!newCliente.isEmpty()) {
-                    out.println("<script>"); 
-                    out.println("alert('El cliente ya existe.')"); 
-                    out.println("</script>"); 
-                    return;
-                } else if (documento.isEmpty()) {
+            if ("Agregar".equalsIgnoreCase(action)) {
+                if (documento.isEmpty()) {
                     out.println("<script>"); 
                     out.println("alert('Numero de documento es requerido')"); 
                     out.println("</script>");
-                    return;
+//                    return;
                 } else if (nombre.isEmpty()) {
                     out.println("<script>"); 
                     out.println("alert('El nombre es requerido.')"); 
                     out.println("</script>");
-                    return;
+//                    return;
                 } else if (apellido.isEmpty()) {
                     out.println("<script>"); 
                     out.println("alert('El apellido es requerido.')"); 
                     out.println("</script>");
-                    return;
+//                    return;
+                } else{
+//                    String newCliente = clienteDAO.getCliente(documento).getNumeroDocumento();
+//                    if (!newCliente.isEmpty()) {
+//                        out.println("<script>"); 
+//                        out.println("alert('El cliente ya existe.')"); 
+//                        out.println("</script>"); 
+//                    } else{
+                        clienteDAO.addCliente(clienteAux);
+//                    }
                 }
-                clienteDAO.addCliente(clienteAux);
             } else if ("Editar".equalsIgnoreCase(action)) {
                 clienteDAO.editCliente(clienteAux);
             } else if ("Buscar".equalsIgnoreCase(action)) {
@@ -78,7 +80,7 @@ public class ClienteServlet extends HttpServlet {
                     out.println("<script>"); 
                     out.println("alert('El cliente no existe.')"); 
                     out.println("</script>");
-                    return;
+//                    return;
                 } else {
                     request.setAttribute("cliente", clienteAux);
                 }
@@ -87,7 +89,7 @@ public class ClienteServlet extends HttpServlet {
             }
                 
             request.setAttribute("clientes", clienteDAO.getAllClientes());
-            request.getRequestDispatcher("cliente.jsp").forward(request, response);
+            request.getRequestDispatcher("cliente.jsp").forward(request,response);
         }
     }
 

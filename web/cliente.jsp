@@ -68,13 +68,14 @@
                 <th>direccion</th>
                 <th>telefono</th>
                 
-                    <c:forEach items="${clientes}" var="clientes">
+                    <c:forEach items="${clientes}" var="cliente">
                         <tr>
-                            <td >${clientes.documento}</td>
-                            <td >${clientes.nombre}</td>
-                            <td >${clientes.apellido}</td>
-                            <td >${clientes.direccion}</td>
-                            <td >${clientes.telefono}</td>   
+                            <td >${cliente.numeroDocumento}</td>
+                            <td >${cliente.nombre}</td>
+                            <td >${cliente.apellido}</td>
+                            <td >${cliente.direccion}</td>
+                            <td >${cliente.telefono}</td> 
+                            <td >a</td> 
                         </tr>                      
                     </c:forEach>
             </table>
