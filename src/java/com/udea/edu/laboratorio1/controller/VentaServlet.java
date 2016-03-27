@@ -66,8 +66,24 @@ public class VentaServlet extends HttpServlet {
                     }
                     break;
                     
-                case "comprar":
+                case "vender":
+                    //Creacion de objetos
+                    Vehiculo vehiculo;
+                    String action2 = "";
                     
+                    //Verificar si se filtro la tabla de vehiculos
+                    if(!placa.isEmpty()){
+                        vehiculo = vehiculoDAO.getVehiculo(placa);
+                    } else{
+                        List<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
+                        action2 = request.getParameter("itemSeleccionado");
+                        int index = Integer.parseInt(action2);
+                        vehiculos = vehiculoDAO.getAllVehiculo();
+                        vehiculo = vehiculos.get(index);
+                    }
+                    
+                    System.out.println("@@@ "+ action2 +" "+vehiculo.getPlaca());
+                    request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
                     break;
    
                     
