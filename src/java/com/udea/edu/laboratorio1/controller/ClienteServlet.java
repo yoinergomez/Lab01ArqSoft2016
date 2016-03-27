@@ -7,9 +7,11 @@ package com.udea.edu.laboratorio1.controller;
 
 import com.udea.edu.laboratorio1.modelo.Cliente;
 import com.udea.edu.laboratorio1.negocio.ClienteDAOLocal;
+import com.udea.edu.laboratorio1.util.ValidadorEntrada;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +26,7 @@ public class ClienteServlet extends HttpServlet {
 
     @EJB
     private ClienteDAOLocal clienteDAO;
-
+    private boolean flag = true;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,7 +40,7 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+            ValidadorEntrada validar = new ValidadorEntrada();
             String action = request.getParameter("action");
             String documento = request.getParameter("documento");
             String nombre = request.getParameter("nombre");
@@ -47,48 +49,49 @@ public class ClienteServlet extends HttpServlet {
             String telefono = request.getParameter("telefono");
             Cliente clienteAux = new Cliente(documento, nombre, apellido, direccion, telefono);
             if ("Agregar".equalsIgnoreCase(action)) {
-                if (documento.isEmpty()) {
-                    out.println("<script>"); 
-                    out.println("alert('Numero de documento es requerido')"); 
-                    out.println("</script>");
-//                    return;
-                } else if (nombre.isEmpty()) {
-                    out.println("<script>"); 
-                    out.println("alert('El nombre es requerido.')"); 
-                    out.println("</script>");
-//                    return;
-                } else if (apellido.isEmpty()) {
-                    out.println("<script>"); 
-                    out.println("alert('El apellido es requerido.')"); 
-                    out.println("</script>");
-//                    return;
-                } else{
-//                    String newCliente = clienteDAO.getCliente(documento).getNumeroDocumento();
-//                    if (!newCliente.isEmpty()) {
-//                        out.println("<script>"); 
-//                        out.println("alert('El cliente ya existe.')"); 
-//                        out.println("</script>"); 
-//                    } else{
-                        clienteDAO.addCliente(clienteAux);
-//                    }
-                }
+                if (validar.esValidoCliente(clienteAux)) {
+                    clienteDAO.addCliente(clienteAux);
+                }else{
+                     String error = validar.crearMensajeScript(
+                                "Ingrese correctamente los datos "
+                                        + "en los campos del formulario");
+                        out.println(error);
+                }                    
             } else if ("Editar".equalsIgnoreCase(action)) {
-                clienteDAO.editCliente(clienteAux);
+                if (validar.esValidoCliente(clienteAux)) {
+                    clienteDAO.editCliente(clienteAux);
+                }else{
+                     String error = validar.crearMensajeScript(
+                                "Ingrese correctamente los datos "
+                                        + "en los campos del formulario");
+                        out.println(error);
+                }         
             } else if ("Buscar".equalsIgnoreCase(action)) {
-                clienteAux = clienteDAO.getCliente(documento);
-                if (clienteAux.getNumeroDocumento().isEmpty()) {
-                    out.println("<script>"); 
-                    out.println("alert('El cliente no existe.')"); 
-                    out.println("</script>");
-//                    return;
-                } else {
-                    request.setAttribute("cliente", clienteAux);
+                if (!documento.isEmpty()) {
+                    ArrayList<Cliente>cliente = new ArrayList<>();
+                cliente.add(clienteDAO.getCliente(documento));
+                request.setAttribute("cliente", cliente);
+                flag = false;
+                }else{
+                    String error = validar.crearMensajeScript(
+                                "Ingrese correctamente el numero de documento ");
+                        out.println(error);
                 }
-            } else if ("Eliminar".equalsIgnoreCase(action)) {
-                clienteDAO.deleteCliente(clienteAux);
-            }
                 
-            request.setAttribute("clientes", clienteDAO.getAllClientes());
+            } else if ("Eliminar".equalsIgnoreCase(action)) {
+                if (validar.esValidoCliente(clienteAux)) {
+                    clienteDAO.deleteCliente(clienteAux);
+                }else{
+                     String error = validar.crearMensajeScript(
+                                "Ingrese correctamente los datos "
+                                        + "en los campos del formulario");
+                        out.println(error);
+                } 
+            }
+            if (flag) {
+                request.setAttribute("cliente", clienteDAO.getAllClientes());
+            }
+            flag = true;
             request.getRequestDispatcher("cliente.jsp").forward(request,response);
         }
     }
