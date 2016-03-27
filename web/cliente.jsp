@@ -1,10 +1,5 @@
-<%-- 
-    Document   : cliente
-    Created on : 24-mar-2016, 15:46:17
-    Author     : Frank Alexis
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,28 +20,29 @@
             <li><a href="VehiculoServlet">Inventario vehiculos</a></li>
             <li><a href="VentasServlet">Lista de ventas</a></li>
         </ul>
+       <div class="container-well">
         <form action="./ClienteServlet" method="POST">
             <br>
             <table>
                 <tr>
                     <th>Documento</th>
-                    <th><input type="text" name="documento" class="form-control"  value="${cliente.documento}"/></th>
+                    <th><input type="text" name="documento" class="form-control"  /></th>
                 </tr>
                 <tr>
                     <th>Nombre</th>
-                    <th><input type="text" name="nombre" class="form-control"  value="${cliente.nombre}"/></th>
+                    <th><input type="text" name="nombre" class="form-control"  /></th>
                 </tr>
                 <tr>
                     <th>Apellido</th>
-                    <th><input type="text" name="apellido" class="form-control"  value="${cliente.apellido}"/></th>
+                    <th><input type="text" name="apellido" class="form-control" /></th>
                 </tr>
                 <tr>
                     <th>Direccion</th>
-                    <th><input type="text" name="direccion" class="form-control"  value="${cliente.direccion}"/></th>
+                    <th><input type="text" name="direccion" class="form-control"  /></th>
                 </tr>
                 <tr>
                     <th>Telefono</th>
-                    <th><input type="text" name="telefono" class="form-control"  value="${cliente.telefono}"/></th>
+                    <th><input type="text" name="telefono" class="form-control"  /></th>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -57,25 +53,21 @@
                     </td>
                 </tr>
             </table> 
-        </form>
-        <div class="container-well">
-            <br>
+        </form>  
             <table class="table table-stripped">
                 <th></th>
                 <th>Documento</th>
                 <th>nombre</th>
                 <th>apellido</th>
                 <th>direccion</th>
-                <th>telefono</th>
-                
-                    <c:forEach items="${clientes}" var="cliente">
+                <th>telefono</th>  
+                    <c:forEach items="${cliente}" var="cliente">
                         <tr>
                             <td >${cliente.numeroDocumento}</td>
                             <td >${cliente.nombre}</td>
                             <td >${cliente.apellido}</td>
                             <td >${cliente.direccion}</td>
                             <td >${cliente.telefono}</td> 
-                            <td >a</td> 
                         </tr>                      
                     </c:forEach>
             </table>
