@@ -5,8 +5,8 @@
  */
 package com.udea.edu.laboratorio1.util;
 
-import com.udea.edu.laboratorio1.modelo.TipoVehiculo;
 import com.udea.edu.laboratorio1.modelo.Cliente;
+import com.udea.edu.laboratorio1.modelo.TipoVehiculo;
 
 /**
  *
@@ -32,7 +32,6 @@ public class ValidadorEntrada {
     public String crearMensajeScript(String string){
         String script1 = "<script type=\"text/javascript\"> alert('";
         String script2 = "'); </script>";
-        
         return script1+string+script2;
     }
     
