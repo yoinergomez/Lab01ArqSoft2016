@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.udea.edu.Laboratorio1.negocio;
+package com.udea.edu.laboratorio1.negocio;
 
-import com.udea.edu.Laboratorio1.modelo.TipoVehiculo;
+import com.udea.edu.laboratorio1.modelo.TipoVehiculo;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,8 +16,8 @@ import javax.ejb.Local;
 @Local
 public interface TipoVehiculoDAOLocal {
     public void addTipoVehiculo(TipoVehiculo tipoVehiculo);
-    public void deleteTipoVehiculo(TipoVehiculo tipoVehiculo);
+    public void deleteTipoVehiculo(String tipoVehiculoId);
     public void editTipoVehiculo(TipoVehiculo tipoVehiculo);
     public TipoVehiculo getTipoVehiculo(String tipoVehiculoId);
-    public List<TipoVehiculo> getAllTipoVehiculo(TipoVehiculo tipoVehiculo);
+    public List<TipoVehiculo> getAllTipoVehiculo();
 }

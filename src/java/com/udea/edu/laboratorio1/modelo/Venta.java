@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.udea.edu.Laboratorio1.modelo;
+package com.udea.edu.laboratorio1.modelo;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -29,10 +29,10 @@ public class Venta implements Serializable{
     @Column(name="fecha")
     private Date fecha;
     @ManyToOne()
-    @JoinColumn(name="Cliente")
+    @JoinColumn(name="numeroDocumento")
     private Cliente cliente;
     @OneToOne()
-    @JoinColumn(name="Vehiculo")
+    @JoinColumn(name="placa")
     private Vehiculo vehiculo;
     
 

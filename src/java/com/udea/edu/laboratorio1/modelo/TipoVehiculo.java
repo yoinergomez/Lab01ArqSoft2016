@@ -3,18 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.udea.edu.Laboratorio1.modelo;
+package com.udea.edu.laboratorio1.modelo;
 
 /**
  *
  * @author 
  */
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.NamedQuery;
 import javax.persistence.NamedQueries;
@@ -54,7 +57,8 @@ public class TipoVehiculo implements Serializable{
     @Column(name="cantidad")
     private int cantidad;
     
-    @Column(name="imagen")
+    @Lob
+    @Basic(fetch=FetchType.LAZY)
     private byte[] imagen;
     
     

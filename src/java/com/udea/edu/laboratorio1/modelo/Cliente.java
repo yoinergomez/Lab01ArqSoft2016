@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.udea.edu.Laboratorio1.modelo;
+package com.udea.edu.laboratorio1.modelo;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -20,8 +20,8 @@ import javax.persistence.Table;
  * @author 
  */
 @Entity
-@Table(name="cliente")
-@NamedQueries(@NamedQuery(name="Cliente.getAll",query="SELECT e FROM cliente e"))
+@Table(name="Cliente")
+@NamedQueries(@NamedQuery(name="Cliente.getAll",query="SELECT e FROM Cliente e"))
 public class Cliente implements Serializable{
 
     public Cliente(String numeroDocumento, String nombre, String apellido, String direccion, String telefono) {
