@@ -45,6 +45,10 @@
                         <th><input type="text" name="placa" class="form-control" placeholder="Placa"/></th>
                         <th><input type="submit" name="action" value="Buscar"/></th>
                     </tr>
+                    <tr style="display:none">
+                        <th>Cedula: </th>
+                        <th><input type="text" name="cedula" class="form-control" placeholder="Cedula cliente"/></th>
+                    </tr>
                 </table> 
                 
                 <table class="table table-stripped" id="table1">

@@ -77,18 +77,21 @@ public class VentaServlet extends HttpServlet {
                     //Obteniendo el vehiculo seleccionado
                     vehiculos = vehiculoDAO.getAllVehiculo();
                     Vehiculo vehiculo = vehiculos.get(index);
-                                        
+                    
+                    
+                    
                     System.out.println("@@@ "+ item +" "+vehiculo.getPlaca());
-                    request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
+                    
                     break;
    
                     
                 default:
-                    request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
+                    //request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
                     break;
             }  
             
             //Redireccionamiento de página jsp
+            request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
             request.getRequestDispatcher("venta.jsp").forward(request,response);
             
         }
