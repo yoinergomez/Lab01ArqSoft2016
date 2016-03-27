@@ -40,6 +40,9 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            String script1 = "<script type=\"text/javascript\"> alert('";
+            String script2 = "'); </script>";
+            out.println(script1+"Hello a todos"+script2);
             ValidadorEntrada validar = new ValidadorEntrada();
             String action = request.getParameter("action");
             String documento = request.getParameter("documento");
