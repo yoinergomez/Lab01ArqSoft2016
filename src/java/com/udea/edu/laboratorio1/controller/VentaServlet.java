@@ -57,32 +57,28 @@ public class VentaServlet extends HttpServlet {
             
             switch(action){
                 case "buscar":
-                    if(!placa.isEmpty()){
-                        List<Vehiculo> vehiculo = new ArrayList<Vehiculo>();
-                        vehiculo.add(vehiculoDAO.getVehiculo(placa));
-                        request.setAttribute("getAllVehiculo", vehiculo);
-                    } else{
-                        request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
-                    }
+//                    if(!placa.isEmpty()){
+//                        List<Vehiculo> vehiculo = new ArrayList<Vehiculo>();
+//                        vehiculo.add(vehiculoDAO.getVehiculo(placa));
+//                        request.setAttribute("getAllVehiculo", vehiculo);
+//                    } else{
+//                        request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
+//                    }
                     break;
                     
                 case "vender":
-                    //Creacion de objetos
-                    Vehiculo vehiculo;
-                    String action2 = "";
+                    //Creacion de lista
+                    List<Vehiculo> vehiculos = new ArrayList<>();
                     
-                    //Verificar si se filtro la tabla de vehiculos
-                    if(!placa.isEmpty()){
-                        vehiculo = vehiculoDAO.getVehiculo(placa);
-                    } else{
-                        List<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
-                        action2 = request.getParameter("itemSeleccionado");
-                        int index = Integer.parseInt(action2);
-                        vehiculos = vehiculoDAO.getAllVehiculo();
-                        vehiculo = vehiculos.get(index);
-                    }
+                    //Obtener la fila seleccionada
+                    String item = request.getParameter("itemSeleccionado");
+                    int index = Integer.parseInt(item);
                     
-                    System.out.println("@@@ "+ action2 +" "+vehiculo.getPlaca());
+                    //Obteniendo el vehiculo seleccionado
+                    vehiculos = vehiculoDAO.getAllVehiculo();
+                    Vehiculo vehiculo = vehiculos.get(index);
+                                        
+                    System.out.println("@@@ "+ item +" "+vehiculo.getPlaca());
                     request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
                     break;
    
