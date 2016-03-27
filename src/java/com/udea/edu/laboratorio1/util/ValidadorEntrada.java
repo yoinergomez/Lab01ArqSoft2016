@@ -22,24 +22,11 @@ public class ValidadorEntrada {
                 tv.getPrecio()<0);
     }
     
-//    public String errorTipoVehiculo(TipoVehiculo tv){
-//        String mensaje = "Ingrese: ";
-//        StringBuffer atributosVacios = new StringBuffer(" ");
-//        
-//        if(tv.getId().isEmpty()){
-//            atributosVacios.append("codigo,");
-//        }
-//        
-//        if(tv.getMarca().isEmpty()){
-//            atributosVacios.append("marca,");
-//        }
-//        
-//        if(tv.getModelo().isEmpty()){
-//            atributosVacios.append("modelo,");
-//        }
-//        atributosVacios.deleteCharAt(atributosVacios.length()-1);
-//
-//    }
+    public boolean esValidoCliente(Cliente c){
+        return !(c.getNumeroDocumento().isEmpty() ||
+                c.getNombre().isEmpty() ||
+                c.getApellido().isEmpty());
+    }
     
     public String crearMensajeScript(String string){
         String script1 = "<script type=\"text/javascript\"> alert('";
