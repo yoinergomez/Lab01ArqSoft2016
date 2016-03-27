@@ -6,6 +6,7 @@
 package com.udea.edu.laboratorio1.util;
 
 import com.udea.edu.laboratorio1.modelo.TipoVehiculo;
+import com.udea.edu.laboratorio1.modelo.Cliente;
 
 /**
  *
