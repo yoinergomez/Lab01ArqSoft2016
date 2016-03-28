@@ -5,6 +5,7 @@
  */
 package com.udea.edu.laboratorio1.util;
 
+import com.udea.edu.laboratorio1.modelo.Cliente;
 import com.udea.edu.laboratorio1.modelo.TipoVehiculo;
 import com.udea.edu.laboratorio1.modelo.Vehiculo;
 
@@ -61,24 +62,12 @@ public class ValidadorEntrada {
 
     }
 
-//    public String errorTipoVehiculo(TipoVehiculo tv){
-//        String mensaje = "Ingrese: ";
-//        StringBuffer atributosVacios = new StringBuffer(" ");
-//        
-//        if(tv.getId().isEmpty()){
-//            atributosVacios.append("codigo,");
-//        }
-//        
-//        if(tv.getMarca().isEmpty()){
-//            atributosVacios.append("marca,");
-//        }
-//        
-//        if(tv.getModelo().isEmpty()){
-//            atributosVacios.append("modelo,");
-//        }
-//        atributosVacios.deleteCharAt(atributosVacios.length()-1);
-//
-//    }
+    public boolean esValidoCliente(Cliente c){
+        return !(c.getNumeroDocumento().isEmpty() ||
+                c.getNombre().isEmpty() ||
+                c.getApellido().isEmpty());
+    }
+
     public String crearMensajeScript(String string) {
         String script1 = "<script type=\"text/javascript\"> alert('";
         String script2 = "'); </script>";
