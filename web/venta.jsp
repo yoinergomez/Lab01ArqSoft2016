@@ -14,7 +14,8 @@
        
         <title>Tipo vehiculo</title>
     </head>
-    <body>       
+    <body>
+        <!--
         <script>
             $(document).ready(function(){
                 var row;
@@ -24,7 +25,7 @@
                 });
             });
         </script>
-        
+        -->
         <ul class="nav nav-tabs">
             <li><a href="index.jsp">Inicio</a></li>
             <li><a href="ClienteServlet">Clientes</a></li>
@@ -41,38 +42,41 @@
                 
                 <table>
                     <tr>
-                        <th>Placa: </th>
-                        <th><input type="text" name="placa" class="form-control" placeholder="Placa"/></th>
-                        <th><input type="submit" name="action" value="Buscar"/></th>
-                    </tr>
-                    <tr style="display:none">
-                        <th>Cedula: </th>
-                        <th><input type="text" name="cedula" class="form-control" placeholder="Cedula cliente"/></th>
+                        <td>Placa: </td>
+                        <td><input type="text" name="placa" class="form-control" placeholder="Placa"/></td>
+                        <td>Cedula: </td>
+                        <td><input type="text" name="cedula" class="form-control" placeholder="Cedula cliente"/></th>
+                        <td><input type="submit" name="action" value="Vender" /></td>
+                        <td><h3>${message}</h3></td>
                     </tr>
                 </table> 
                 
                 <table class="table table-stripped" id="table1">
                     <tr>
+                    <th>Fecha de venta</th>
+                    <th>Cedula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Placa</th>
-                    <th>Color</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Precio</th>
                     <th>Imagen</th>
                     <th></th>
                     </tr>
-                    <c:forEach items="${getAllVehiculo}" var="vehiculo">
+                    <c:forEach items="${getAllVentas}" var="venta">
                         <tr>
-                            <td id="placaVehiculo">${vehiculo.placa}</td>
-                            <td >${vehiculo.color}</td> 
-                            <td >${vehiculo.tipoVehiculo.marca}</td>  
-                            <td >${vehiculo.tipoVehiculo.modelo}</td>  
-                            <td >${vehiculo.tipoVehiculo.precio}</td>
-                            <td><img width="150" height="100" src="images/${vehiculo.tipoVehiculo.id}"></td>  
-                            <td><input type="text" name="action2" value="${vehiculo.placa}" placeholder="Placa"/></td>
-                            <td><input type="submit" name="action" value="Vender" /></td>
+                            <td >${venta.fecha}</td>
+                            <td >${venta.cliente.numeroDocumento}</td> 
+                            <td >${venta.cliente.nombre}</td> 
+                            <td >${venta.cliente.apellido}</td> 
+                            <td >${venta.vehiculo.placa}</td>
+                            <td >${venta.vehiculo.tipoVehiculo.marca}</td>
+                            <td >${venta.vehiculo.tipoVehiculo.modelo}</td>
+                            <td >${venta.vehiculo.tipoVehiculo.precio}</td>
+                            <td><img width="150" height="100" src="images/${venta.vehiculo.tipoVehiculo.id}"></td>
                         </tr>                      
-                    </c:forEach>    
+                    </c:forEach>   
                 </table>
             </form>
         </div>

@@ -6,13 +6,15 @@
 package com.udea.edu.laboratorio1.controller;
 
 import com.udea.edu.laboratorio1.modelo.Vehiculo;
+import com.udea.edu.laboratorio1.modelo.Cliente;
+import com.udea.edu.laboratorio1.modelo.Venta;
+import com.udea.edu.laboratorio1.negocio.ClienteDAOLocal;
 import com.udea.edu.laboratorio1.negocio.VehiculoDAOLocal;
 import com.udea.edu.laboratorio1.negocio.VentaDAOLocal;
 import com.udea.edu.laboratorio1.util.Parse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,12 +28,15 @@ import javax.servlet.http.HttpServletResponse;
 public class VentaServlet extends HttpServlet {
 
     @EJB
+    private ClienteDAOLocal clienteDAO;
+
+    @EJB
     private VehiculoDAOLocal vehiculoDAO;
 
     @EJB
     private VentaDAOLocal ventaDAO;
     
-
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -48,50 +53,68 @@ public class VentaServlet extends HttpServlet {
             
             //Captura de valores del formulario
             String placa = request.getParameter("placa");
+            String cedula = request.getParameter("cedula");
             
             //Capturando la acción
             Parse parse = new Parse();
             String action = request.getParameter("action");
             action = parse.aMinuscula(action);
             
-            
+            String mensaje = "";
             switch(action){
-                case "buscar":
-//                    if(!placa.isEmpty()){
-//                        List<Vehiculo> vehiculo = new ArrayList<Vehiculo>();
-//                        vehiculo.add(vehiculoDAO.getVehiculo(placa));
-//                        request.setAttribute("getAllVehiculo", vehiculo);
-//                    } else{
-//                        request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
-//                    }
-                    break;
                     
                 case "vender":
-                    //Creacion de lista
-                    List<Vehiculo> vehiculos = new ArrayList<>();
+                    //Creando objetos
+                    Vehiculo vehiculo = null;
+                    Cliente cliente = null;
                     
-                    //Obtener la fila seleccionada
-                    String item = request.getParameter("itemSeleccionado");
-                    int index = Integer.parseInt(item);
+                    //Obteniendo el vehiculo
+                    if(!placa.isEmpty()){
+                        vehiculo = vehiculoDAO.getVehiculo(placa);
+                        if(vehiculo==null){
+                            mensaje = "El vehiculo no existe";
+                        }
+                    }else {
+                        mensaje = "Digite una placa";
+                    }
                     
-                    //Obteniendo el vehiculo seleccionado
-                    vehiculos = vehiculoDAO.getAllVehiculo();
-                    Vehiculo vehiculo = vehiculos.get(index);
+                    //Obteniendo el cliente
+                    if(!cedula.isEmpty()){
+                        cliente = clienteDAO.getCliente(cedula);
+                        if(cliente==null){
+                            mensaje = "El cliente no existe";
+                        }
+                    }else {
+                        mensaje = "Digite una cedula";
+                    }
                     
-                    
-                    
-                    System.out.println("@@@ "+ item +" "+vehiculo.getPlaca());
+                    //Guardando venta
+                    if(cliente!=null && vehiculo!=null){
+                        Calendar calendar = Calendar.getInstance();
+                        if(vehiculo.getEstado()==0){
+                            vehiculo.setEstado(1);
+                            Venta venta = new Venta(calendar.getTime(), cliente, vehiculo);
+                            vehiculoDAO.editVehiculo(vehiculo);
+                            ventaDAO.addVenta(venta);
+                            mensaje = "Venta exitosa!";
+                        } else{
+                            mensaje = "El vehiculo ya ha sido vendido";
+                        }
+                        
+                    }
                     
                     break;
    
                     
                 default:
-                    //request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
                     break;
             }  
             
+            //Actualizar la lista de las ventas
+            request.setAttribute("getAllVentas", ventaDAO.getAllVentas());
+            //Actualizar el mensaje en le pagina
+            request.setAttribute("message", mensaje);
             //Redireccionamiento de página jsp
-            request.setAttribute("getAllVehiculo", vehiculoDAO.getAllVehiculoDisponible());
             request.getRequestDispatcher("venta.jsp").forward(request,response);
             
         }

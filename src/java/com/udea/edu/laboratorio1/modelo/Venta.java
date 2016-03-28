@@ -6,7 +6,7 @@
 package com.udea.edu.laboratorio1.modelo;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Venta")
@@ -27,6 +29,7 @@ public class Venta implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="fecha")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     @ManyToOne()
     @JoinColumn(name="numeroDocumento")
@@ -34,6 +37,15 @@ public class Venta implements Serializable{
     @OneToOne()
     @JoinColumn(name="placa")
     private Vehiculo vehiculo;
+
+    public Venta(Date fecha, Cliente cliente, Vehiculo vehiculo) {
+        this.fecha = fecha;
+        this.cliente = cliente;
+        this.vehiculo = vehiculo;
+    }
+
+    public Venta() {
+    }
     
 
     public Date getFecha() {
