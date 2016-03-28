@@ -67,7 +67,7 @@ public class TipoVehiculoServlet extends HttpServlet {
             Part part;
             byte[] imagen;
             switch(action){
-                case "add":
+                case "agregar":
                     //Leyendo la imagen
                     part = request.getPart("imagen");
                     imagen = parse.leerImagen(part);
@@ -85,7 +85,7 @@ public class TipoVehiculoServlet extends HttpServlet {
                     
                     break;
                     
-                case "edit":
+                case "editar":
                     //Leyendo la imagen
                     part = request.getPart("imagen");
                     imagen = parse.leerImagen(part);
@@ -93,7 +93,7 @@ public class TipoVehiculoServlet extends HttpServlet {
                     //Editando un tipo de vehiculo
                     tipoVehiculo = new TipoVehiculo(id, marca, modelo, precio, cantidad, imagen);
                     if(validar.esValidoTipoVehiculo(tipoVehiculo)){
-                        tipoVehiculoDAO.addTipoVehiculo(tipoVehiculo);
+                        tipoVehiculoDAO.editTipoVehiculo(tipoVehiculo);
                     } else {
                         String error = validar.crearMensajeScript(
                                 "Ingrese correctamente los datos "
@@ -101,7 +101,7 @@ public class TipoVehiculoServlet extends HttpServlet {
                         out.println(error);
                     }
                     break;
-                case "delete":
+                case "borrar":
                     //Eliminando un tipo de vehiculo
                     tipoVehiculoDAO.deleteTipoVehiculo(id);
                     break;

@@ -46,25 +46,29 @@
                 <div class="row-fluid">
                     <div class="span4">
                         <h5>Documento</h5>
-                        <input type="text" name="documento" class="form-control" required />
+                        <input type="text" name="documento" class="form-control" placeholder="documento" required />
 
                         <h5>Nombre</h5>
-                        <input type="text" name="nombre" class="form-control" required />
+                        <input type="text" name="nombre" class="form-control" placeholder="nombre" required />
 
                         <h5>Apellido</h5>
-                        <input type="text" name="apellido" class="form-control" />
+                        <input type="text" name="apellido" class="form-control" placeholder="apellido" />
                     </div>
                     <div class="span4">
                         <h5>Direccion</h5>
-                        <input type="text" name="direccion" class="form-control"  />
+                        <input type="text" name="direccion" class="form-control" placeholder="direccion" />
 
                         <h5>Telefono</h5>
-                        <input type="text" name="telefono" class="form-control"  />
+                        <input type="text" name="telefono" class="form-control" placeholder="telefono" />
                     </div>
                     <div class="span4">
+                        <br>
                         <input type="submit" name="action" value="Agregar" class="btn btn-block btn-primary"/>
+                        <br>
                         <input type="submit" name="action" value="Editar" class="btn btn-block btn-primary"/>
+                        <br>
                         <input type="submit" name="action" value="Eliminar" class="btn btn-block btn-primary"/>
+                        <br>
                         <input type="submit" name="action" value="Buscar" class="btn btn-block btn-primary"/>
                     </div>
                 </div>
