@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.udea.edu.Laboratorio1.negocio;
+package com.udea.edu.laboratorio1.negocio;
 
 
-import com.udea.edu.Laboratorio1.modelo.Venta;
+import com.udea.edu.laboratorio1.modelo.Venta;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,7 +19,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class VentaDAO implements VentaDAOLocal {
 
-    @PersistenceContext(unitName = "Lab01Arq_Soft2016PU")
+    @PersistenceContext(unitName = "Laboratorio1_2PU")
     private EntityManager em;
     
     

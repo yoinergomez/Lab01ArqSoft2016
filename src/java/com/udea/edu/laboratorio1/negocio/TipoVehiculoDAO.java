@@ -1,6 +1,6 @@
-package com.udea.edu.Laboratorio1.negocio;
+package com.udea.edu.laboratorio1.negocio;
 
-import com.udea.edu.Laboratorio1.modelo.TipoVehiculo;
+import com.udea.edu.laboratorio1.modelo.TipoVehiculo;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class TipoVehiculoDAO implements TipoVehiculoDAOLocal {
-    @PersistenceContext(unitName = "Lab01Arq_Soft2016PU")
+    @PersistenceContext(unitName = "Laboratorio1_2PU")
     private EntityManager em;
 
     @Override
@@ -21,9 +21,8 @@ public class TipoVehiculoDAO implements TipoVehiculoDAOLocal {
     }
 
     @Override
-    public void deleteTipoVehiculo(TipoVehiculo tipoVehiculo) {
-        tipoVehiculo = em.find(TipoVehiculo.class, tipoVehiculo.getId());
-        em.remove(tipoVehiculo);
+    public void deleteTipoVehiculo(String tipoVehiculo) {
+        em.remove(getTipoVehiculo(tipoVehiculo));
     }
 
     @Override
@@ -37,8 +36,8 @@ public class TipoVehiculoDAO implements TipoVehiculoDAOLocal {
     }
 
     @Override
-    public List<TipoVehiculo> getAllTipoVehiculo(TipoVehiculo tipoVehiculo) {
-        return em.createQuery("TipoVehiculo.getAll").getResultList();
+    public List<TipoVehiculo> getAllTipoVehiculo() {
+        return em.createNamedQuery("TipoVehiculo.getAll").getResultList();
     }
 
     public void persist(Object object) {

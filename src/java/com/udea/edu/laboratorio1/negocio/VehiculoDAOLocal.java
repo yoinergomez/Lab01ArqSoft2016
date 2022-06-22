@@ -1,6 +1,6 @@
-package com.udea.edu.Laboratorio1.negocio;
+package com.udea.edu.laboratorio1.negocio;
 
-import com.udea.edu.Laboratorio1.modelo.Vehiculo;
+import com.udea.edu.laboratorio1.modelo.Vehiculo;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,6 +15,7 @@ public interface VehiculoDAOLocal {
     public void deleteVehiculo(Vehiculo vehiculo);
     public void editVehiculo(Vehiculo vehiculo);
     public Vehiculo getVehiculo(String vehiculoPlaca);
-    public List<Vehiculo> getAllVehiculo(Vehiculo vehiculo);
+    public List<Vehiculo> getAllVehiculo();
+    public List<Vehiculo> getAllVehiculoDisponible();
     
 }
